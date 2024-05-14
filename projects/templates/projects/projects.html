@@ -7,8 +7,11 @@
 
 <ul>
     {% for project in projects %}
-        <a href="{% url 'project' project.id %}"><li>{{ project }}</li></a>
+        <h2><a href="{% url 'project' project.id %}"><li>{{ project }}</li></a></h2>
         <a href="{% url 'update-project' project.id %}">Edit</a>
+        <a href="{% url 'delete-project' project.id %}">Delete</a>
+        <hr>
+        <hr>
     {% endfor %}
 </ul>
 {% endblock %}
