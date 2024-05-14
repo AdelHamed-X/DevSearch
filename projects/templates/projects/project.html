@@ -1,0 +1,9 @@
+<h1>
+    {{ project }}
+</h1>
+
+<ul>
+    {% for tag in project.tags.all %}
+        <li>{{ tag }}</li>
+    {% endfor %}
+</ul>
