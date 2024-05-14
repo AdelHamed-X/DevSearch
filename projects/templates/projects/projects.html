@@ -7,7 +7,8 @@
 
 <ul>
     {% for project in projects %}
-    <a href="{% url 'project' project.id %}"><li>{{ project }}</li></a>
+        <a href="{% url 'project' project.id %}"><li>{{ project }}</li></a>
+        <a href="{% url 'update-project' project.id %}">Edit</a>
     {% endfor %}
 </ul>
 {% endblock %}
