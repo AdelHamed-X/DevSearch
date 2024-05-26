@@ -8,7 +8,7 @@ class Project(models.Model):
     featured_image = models.ImageField(blank=True, null=True, default='default.jpg')
     demo_link = models.CharField(max_length=2000, blank=True)
     source_link = models.CharField(max_length=2000, blank=True)
-    tags = models.ManyToManyField('Tag', blank=True, null=True)
+    tags = models.ManyToManyField('Tag', blank=True)
     total_votes = models.IntegerField(default=0, blank=True, null=True)
     votes_ratio = models.IntegerField(default=0, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
