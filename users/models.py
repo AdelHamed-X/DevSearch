@@ -9,7 +9,7 @@ class Profile(models.Model):
     name = models.CharField(max_length=200, blank=True, null=True)
     email = models.EmailField(max_length=200, blank=True, null=True)
     username = models.CharField(max_length=200, blank=True, null=True)
-    headline = models.CharField(max_length=200, blank=True, null=True)
+    short_intro = models.CharField(max_length=200, blank=True, null=True)
     bio = models.TextField(null=True, blank=True)
     location = models.CharField(max_length=200, blank=True, null=True)
     profile_image = models.ImageField(null=True, blank=True, upload_to='profiles/', default='profiles/users-default.png')
@@ -22,4 +22,16 @@ class Profile(models.Model):
     id = models.UUIDField(default=uuid4, editable=False, primary_key=True, unique=True)
 
     def __str__(self) -> str:
-        return self.user.username
+        return self.name
+    
+class Skill(models.Model):
+    owner = models.ForeignKey('Profile', on_delete=models.CASCADE, related_name='skills')
+    name = models.CharField(max_length=200, blank=True, null=True)
+    description = models.TextField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    id = models.UUIDField(default=uuid4, editable=False, primary_key=True, unique=True)
+
+    def __str__(self) -> str:
+        return self.name
+    

@@ -11,3 +11,12 @@ def profiles(request):
         'profiles': profiles,
     }
     return render(request, 'users/profiles.html', context)
+
+
+def profile(request, pk):
+    """ User profile page """
+    profile = Profile.objects.get(id=pk)
+    context = {
+        'profile': profile,
+    }
+    return render(request, 'users/user-account.html', context)
