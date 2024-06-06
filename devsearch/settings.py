@@ -140,6 +140,9 @@ STORAGES = {
     "staticfiles": {
         # This backend allows very effecient compression and caching algorithm when serving static files
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+    "messages": {
+        "BACKEND": "django.contrib.messages.storage.session.CookieStorage",
     }
 }
 
