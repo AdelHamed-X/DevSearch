@@ -28,6 +28,7 @@ def project(request, pk):
 def create_project(request):
     """ Project creation """
     form = ProjectForm()
+    user = request.user
 
     if request.method == 'POST':
         form = ProjectForm(request.POST, request.FILES)
@@ -35,9 +36,12 @@ def create_project(request):
             print(form.cleaned_data)
             project = form.save()
             project.featured_image = request.POST.get('featured_image')
+            project.owner = user
+            project.save()
             return redirect('projects')
 
     context = {
+        'back_url': request.META.get('HTTP_REFERER', '/default/url/'),
         'form': form,
     }
     return render(request, 'projects/project-form.html', context)

@@ -9,11 +9,11 @@ class ProjectForm(ModelForm):
     class Meta:
         """ Metadata for project creation form """
         model = Project
-        fields = '__all__'
-        exclude = ['total_votes', 'votes_ratio']
-        widgets = {
-            'tags': forms.CheckboxSelectMultiple(),
-        }
+        fields = ['title', 'featured_image', 'description',
+                  'demo_link', 'source_link']
+        # widgets = {
+        #     'tags': forms.CheckboxSelectMultiple(),
+        # }
 
     def __init__(self, *args, **kwargs):
         """ Custom inistantiation for form object """
