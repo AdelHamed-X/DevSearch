@@ -6,6 +6,7 @@ from .forms import ProjectForm
 
 
 def projects(request):
+    """ All projects page """
     all_projects = Project.objects.all()
 
     context = {
@@ -15,6 +16,7 @@ def projects(request):
 
 
 def project(request, pk):
+    """ single project page """
     project = Project.objects.get(id=pk)
 
     context = {
@@ -24,6 +26,7 @@ def project(request, pk):
 
 
 def create_project(request):
+    """ Project creation """
     form = ProjectForm()
 
     if request.method == 'POST':
