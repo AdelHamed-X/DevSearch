@@ -29,6 +29,7 @@ def create_project(request):
     if request.method == 'POST':
         form = ProjectForm(request.POST, request.FILES)
         if form.is_valid():
+            print(form.cleaned_data)
             project = form.save()
             project.featured_image = request.POST.get('featured_image')
             return redirect('projects')

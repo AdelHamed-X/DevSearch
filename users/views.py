@@ -34,6 +34,7 @@ def userRegister(request):
 
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
+        print(form)
         if form.is_valid():
             user = form.save(commit=False)
             user.username = user.username.lower()
@@ -47,7 +48,6 @@ def userRegister(request):
     else:
         form = UserRegistrationForm()
 
-
     context = {'page': page, 'form': form}
     return render(request, 'users/login_register.html', context)
 
@@ -59,7 +59,7 @@ def userLogout(request):
 
 
 def profiles(request):
-    """ main profiles page """
+    """ All developers profiles """
     profiles = Profile.objects.all()
     context = {
         'profiles': profiles,

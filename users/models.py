@@ -4,6 +4,7 @@ from uuid import uuid4
 
 # Create your models here.
 
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=200, blank=True, null=True)
@@ -23,7 +24,8 @@ class Profile(models.Model):
 
     def __str__(self) -> str:
         return self.name
-    
+
+
 class Skill(models.Model):
     owner = models.ForeignKey('Profile', on_delete=models.CASCADE, related_name='skills')
     name = models.CharField(max_length=200, blank=True, null=True)
